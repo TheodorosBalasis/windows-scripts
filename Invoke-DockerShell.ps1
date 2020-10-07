@@ -1,5 +1,5 @@
 param(
-    [Parameter(Mandatory)][String] $ContainerName
+	[Parameter(Mandatory)][String] $ContainerName
 )
 
-docker exec -it $ContainerName bash
+docker exec -it $ContainerName sh

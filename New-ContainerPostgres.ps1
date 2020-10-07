@@ -1,6 +1,16 @@
 param(
-    [String] $ContainerName = 'PostgreSQL',
-    [Parameter(Mandatory)][String] $RootPassword
+	[String] $ContainerName = 'PostgreSQL',
+	[Parameter(Mandatory)][String] $RootPassword
+	[Switch] $Expose
 )
 
-docker run --name $ContainerName -e POSTGRES_PASSWORD=$RootPassword -d postgres:latest
+if ($Expose) {
+	docker run 	--name $ContainerName `
+				-e POSTGRES_PASSWORD=$RootPassword `
+				-p 5432:5432 `
+				-d postgres:latest
+} else {
+	docker run 	--name $ContainerName `
+				-e POSTGRES_PASSWORD=$RootPassword `
+				-d postgres:latest
+}
