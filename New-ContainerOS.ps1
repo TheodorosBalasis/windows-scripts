@@ -8,7 +8,7 @@ param(
 		'ubuntu'
 	)][String] $Type,
 	[String] $ContainerName = 'OSContainer',
-	[Parameter(Mandatory)][int[]] $ExposedPorts
+	[int[]] $ExposedPorts
 )
 
 if ($ContainerName -eq '') {
